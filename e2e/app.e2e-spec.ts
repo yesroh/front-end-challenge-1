@@ -1,14 +1,16 @@
-import { FrontEndChallengePage } from './app.po';
+import { CuboPage } from './app.po';
 
-describe('front-end-challenge App', function() {
-  let page: FrontEndChallengePage;
+describe('cubo App', () => {
+  let page: CuboPage;
 
   beforeEach(() => {
-    page = new FrontEndChallengePage();
+    page = new CuboPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', done => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    page.getParagraphText()
+      .then(msg => expect(msg).toEqual('Welcome to app!!'))
+      .then(done, done.fail);
   });
 });
